@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PrepPilot — Smart Exam Preparation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">P</span><span>PrepPilot<small>SMART EXAM PREP</small></span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav active" data-view="dashboard">▦ <span>Dashboard</span></button>
+    <button class="nav" data-view="practice">▣ <span>Practice test</span></button>
+    <button class="nav" data-view="weakness">◉ <span>Weakness detector</span></button>
+    <button class="nav" data-view="mistakes">↻ <span>Mistake review</span></button>
+    <button class="nav" data-view="planner">☷ <span>Study planner</span></button>
+    <div class="sidebar-bottom"><div class="mini-avatar">S</div><div><b>Student workspace</b><small>Your progress is saved on this device</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">YOUR PERSONAL EXAM COACH</span><h1 id="page-title">Dashboard</h1></div><div class="top-actions"><span class="date-pill" id="today"></span><button class="primary small" data-goto="practice">Start practice ↗</button></div></header>
+    <section class="view active" id="dashboard">
+      <div class="welcome"><div><span class="pill">✦ YOUR STUDY JOURNEY</span><h2>Small steps. <em>Stronger scores.</em></h2><p>Practise, discover your weak topics, and turn mistakes into progress.</p></div><div class="welcome-art"><div class="orbit o1"></div><div class="orbit o2"></div><div class="book">✦</div><div class="floating f1">+12%</div><div class="floating f2">Focus mode</div></div></div>
+      <div class="stats">
+        <article class="stat"><span class="stat-icon purple">▣</span><span class="stat-label">Questions attempted</span><strong id="stat-attempted">0</strong><small>Keep your momentum going</small></article>
+        <article class="stat"><span class="stat-icon green">✓</span><span class="stat-label">Overall accuracy</span><strong id="stat-accuracy">—</strong><small>Based on completed questions</small></article>
+        <article class="stat"><span class="stat-icon orange">◉</span><span class="stat-label">Topics to improve</span><strong id="stat-weak">3</strong><small>Based on your practice results</small></article>
+        <article class="stat"><span class="stat-icon blue">↻</span><span class="stat-label">Review queue</span><strong id="stat-review">0</strong><small>Questions saved from mistakes</small></article>
+      </div>
+      <div class="content-grid">
+        <article class="panel"><div class="panel-head"><div><h3>Topic performance</h3><p>Your accuracy by subject</p></div><button class="text-btn" data-goto="weakness">View analysis →</button></div><div id="topic-bars" class="topic-bars"></div></article>
+        <article class="panel next-panel"><div class="panel-head"><div><h3>Recommended next step</h3><p>Make your next session count</p></div></div><div class="recommend-icon">✦</div><h2 id="recommend-title">Take your first practice test</h2><p id="recommend-text">Your results will help PrepPilot recommend which topic to work on first.</p><button class="primary full" data-goto="practice">Start a 10-question test →</button><div class="tip">💡 <span><b>PrepPilot tip</b><br>Reviewing mistakes helps you learn from every attempt.</span></div></article>
+      </div>
+      <article class="panel roadmap"><div class="panel-head"><div><h3>Your learning loop</h3><p>A simple cycle designed to help you improve</p></div></div><div class="loop"><div><span>01</span><b>Practise</b><small>Answer topic questions</small></div><i>→</i><div><span>02</span><b>Diagnose</b><small>Find your weak spots</small></div><i>→</i><div><span>03</span><b>Revise</b><small>Retry missed questions</small></div><i>→</i><div><span>04</span><b>Improve</b><small>Track your progress</small></div></div></article>
+    </section>
+    <section class="view" id="practice">
+      <div class="section-intro"><span class="pill">PRACTICE ARENA</span><h2>Learn by doing.</h2><p>Choose a topic and answer a short practice set. Your results update your topic analysis.</p></div>
+      <div class="panel quiz-panel"><div class="quiz-controls"><label>Choose topic<select id="topic-select"><option>History</option><option>Polity</option><option>Geography</option><option>Science</option><option>General Knowledge</option></select></label><div class="question-count" id="question-count">10 questions · Practice mode</div></div>
+        <div id="quiz-area"><div class="quiz-empty"><div class="big-icon">✎</div><h3>Ready for a quick challenge?</h3><p>Questions are provided for demonstration and practice. Verify facts with your official syllabus and trusted sources.</p><button class="primary" id="start-quiz">Begin practice test →</button></div></div>
+      </div>
+    </section>
+    <section class="view" id="weakness">
+      <div class="section-intro"><span class="pill">PERSONALISED INSIGHTS</span><h2>Find your next improvement.</h2><p>Topic recommendations are calculated from your recorded quiz answers—not guesses.</p></div>
+      <div class="stats compact"><article class="stat"><span class="stat-label">Topics assessed</span><strong id="assessed-count">0</strong></article><article class="stat"><span class="stat-label">Needs attention</span><strong id="weak-count">0</strong></article><article class="stat"><span class="stat-label">Strong topics</span><strong id="strong-count">0</strong></article></div>
+      <article class="panel"><div class="panel-head"><div><h3>Detailed topic analysis</h3><p>Accuracy is calculated only from questions you've answered.</p></div></div><div id="weakness-details"></div></article>
+      <article class="panel insight"><h3>How the detector works</h3><p>For each topic, PrepPilot calculates correct answers ÷ attempted answers. Topics below 60% accuracy are marked “Needs practice”; topics at 80% or above are marked “On track.” Topics with no attempts are labelled “Not assessed.” These are learning indicators, not a prediction of your exam result.</p></article>
+    </section>
+    <section class="view" id="mistakes">
+      <div class="section-intro"><span class="pill">LEARN FROM EVERY ERROR</span><h2>Your mistake review.</h2><p>Incorrect answers are saved here so you can retry them later.</p></div>
+      <article class="panel"><div class="panel-head"><div><h3>Review queue</h3><p id="mistake-subtitle">No saved mistakes yet.</p></div><button class="outline" id="clear-mistakes">Clear queue</button></div><div id="mistake-list"></div></article>
+    </section>
+    <section class="view" id="planner">
+      <div class="section-intro"><span class="pill">YOUR WEEK, WITH PURPOSE</span><h2>A practical study plan.</h2><p>Use your weak-topic results to focus your next study session.</p></div>
+      <div class="planner-grid"><article class="panel"><h3>Build your daily plan</h3><p class="muted">Set your available study time and the plan will split it across priority topics.</p><label class="field-label">Available time per day<select id="study-time"><option value="30">30 minutes</option><option value="60" selected>1 hour</option><option value="90">1.5 hours</option><option value="120">2 hours</option></select></label><button class="primary full" id="generate-plan">Generate my plan</button></article><article class="panel"><div class="panel-head"><div><h3>Today's focus</h3><p>Suggested from your recorded performance</p></div></div><div id="plan-output" class="plan-output"><div class="empty-state">Generate a plan to see your recommended study blocks.</div></div></article></div>
+    </section>
+    <footer>PrepPilot · Internship project prototype <span>Study smarter, one question at a time.</span></footer>
+  </main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body></html>
